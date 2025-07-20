@@ -145,23 +145,6 @@ php artisan db:seed
    - Various pricing structures
    - Different amenities and capacities
 
-### **Custom Seeding**
-
-To create your own data:
-
-```bash
-# Create individual seeders
-php artisan make:seeder CustomStadiumSeeder
-
-# Run specific seeder
-php artisan db:seed --class=CustomStadiumSeeder
-
-# Reset and reseed
-php artisan migrate:fresh --seed
-```
-
----
-
 ## 🏢 **Admin Dashboard**
 
 ### **Accessing the Admin Panel**
@@ -312,43 +295,6 @@ GET /api/stadiums
 GET /api/stadiums/{id}
 ```
 
-#### **Get Available Slots for Stadium**
-```http
-GET /api/stadiums/{id}/available-slots?date=2025-07-21
-```
-
-**Parameters:**
-- `date` (required): Date in YYYY-MM-DD format
-
-**Response:**
-```json
-{
-    "success": true,
-    "data": {
-        "stadium_id": 1,
-        "date": "2025-07-21",
-        "pitches": [
-            {
-                "pitch_id": 1,
-                "pitch_name": "Pitch 1",
-                "pitch_type": "football",
-                "pitch_surface": "grass",
-                "available_slots": [
-                    {
-                        "start_time": "08:00",
-                        "end_time": "09:00",
-                        "duration_minutes": 60,
-                        "price": "170.00"
-                    }
-                ]
-            }
-        ]
-    }
-}
-```
-
----
-
 ### **📅 Booking Endpoints**
 
 #### **Create New Booking**
@@ -405,18 +351,6 @@ Content-Type: application/json
 ```http
 GET /api/bookings?date=2025-07-21
 ```
-
-#### **Get User Bookings**
-```http
-GET /api/bookings/user/bookings?email=user@example.com
-```
-
-#### **Cancel Booking**
-```http
-PATCH /api/bookings/{id}/cancel
-```
-
----
 
 ### **🔍 Pitch Endpoints**
 
@@ -490,16 +424,6 @@ We have **26 comprehensive tests** covering:
 - ✅ Calculates correct pricing
 - ✅ Prevents booking unavailable pitches
 
-### **Test Examples**
-
-#### **Testing Slot Availability**
-```bash
-# Test that 60-minute pitch only returns 60-minute slots
-php artisan test --filter="it_returns_only_60_minute_slots"
-
-# Test overbooking prevention
-php artisan test --filter="it_prevents_overbooking"
-```
 
 #### **Testing Business Rules**
 ```bash
@@ -510,19 +434,6 @@ php artisan test --filter="it_validates_duration_matches_slot_type"
 php artisan test --filter="it_validates_booking_within_operating_hours"
 ```
 
-### **Manual API Testing**
-
-Use the provided test script:
-
-```bash
-# Make the script executable
-chmod +x api-test.sh
-
-# Run API tests
-./api-test.sh
-```
-
----
 
 ## ⚙️ **Configuration**
 
@@ -585,46 +496,7 @@ ADMIN_PASSWORD=P@ssword12
    - **Pitch B**: 90-minute slots, 08:00-23:00, weekdays only
    - **Pitch C**: 60-minute slots, 10:00-18:00, weekends only
 
-### **Scenario 2: API Integration**
-
-```javascript
-// Frontend integration example
-const bookPitch = async (bookingData) => {
-    try {
-        const response = await fetch('/api/bookings', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(bookingData)
-        });
-        
-        const result = await response.json();
-        
-        if (result.success) {
-            console.log('Booking successful:', result.data);
-        } else {
-            console.error('Booking failed:', result.errors);
-        }
-    } catch (error) {
-        console.error('Network error:', error);
-    }
-};
-
-// Usage
-bookPitch({
-    pitch_id: 1,
-    user_name: 'Ahmed Ali',
-    user_email: 'ahmed@example.com',
-    user_phone: '+971501234567',
-    booking_date: '2025-07-21',
-    start_time: '15:00',
-    end_time: '16:00',
-    duration_minutes: 60
-});
-```
-
-### **Scenario 3: Mobile App Integration**
+### **Scenario 2: Mobile App Integration**
 
 ```bash
 # Get available slots
