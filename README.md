@@ -583,4 +583,4 @@ For support and questions:
 
 ---
 
-**Built with ❤️ using Laravel 11 and modern web technologies.**
+**Built with ❤️ using Laravel 12 and modern web technologies.**
