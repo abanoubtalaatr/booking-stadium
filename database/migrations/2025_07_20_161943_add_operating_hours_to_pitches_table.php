@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::table('pitches', function (Blueprint $table) {
             $table->time('operating_start_time')->default('06:00:00')->after('amenities');
             $table->time('operating_end_time')->default('23:00:00')->after('operating_start_time');
-            $table->json('operating_days')->default('["monday","tuesday","wednesday","thursday","friday","saturday","sunday"]')->after('operating_end_time');
+            $table->json('operating_days')->nullable()->after('operating_end_time'); // removed default
         });
     }
 

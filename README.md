@@ -6,6 +6,68 @@ A comprehensive Laravel-based Stadium Booking API system that allows users to bo
 [![PHP](https://img.shields.io/badge/PHP-8.2+-blue.svg)](https://php.net)
 [![Tests](https://img.shields.io/badge/Tests-26%20Tests-green.svg)](#testing)
 
+---
+
+## 🛠️ **Installation**
+
+### **Prerequisites**
+- PHP 8.2 or higher
+- Composer
+- Laravel 11.x
+- SQLite/MySQL/PostgreSQL
+
+### **Setup Steps**
+
+1. **Clone the repository**
+```bash
+git clone <repository-url>
+cd booking-stadium
+```
+
+2. **Install dependencies**
+```bash
+composer install
+```
+
+3. **Environment setup**
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+
+4. **Configure database in `.env`**
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=booking_stadium
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+```
+
+5. **Run migrations and seeders**
+```bash
+php artisan migrate
+php artisan db:seed
+```
+
+6. **Start the server**
+```bash
+php artisan serve
+```
+
+The application will be available at `http://localhost:8000`
+
+### **🔐 Admin Access Credentials**
+
+After running the seeders, you can access the admin dashboard with:
+
+- **Admin Panel URL**: `http://localhost:8000/admin/login`
+- **Email**: `safa@admin.com`
+- **Password**: `P@ssword12`
+
+---
+
 ## 🚀 **Features**
 
 ### **Core Functionality**
@@ -38,7 +100,7 @@ A comprehensive Laravel-based Stadium Booking API system that allows users to bo
 
 ## 📋 **Table of Contents**
 
-1. [Installation](#installation)
+1. [Installation](#installation) ✅ **Start Here**
 2. [Database Setup & Seeding](#database-setup--seeding)
 3. [Admin Dashboard](#admin-dashboard)
 4. [Public Website](#public-website)
@@ -46,59 +108,6 @@ A comprehensive Laravel-based Stadium Booking API system that allows users to bo
 6. [Testing](#testing)
 7. [Configuration](#configuration)
 8. [Usage Examples](#usage-examples)
-
----
-
-## 🛠️ **Installation**
-
-### **Prerequisites**
-- PHP 8.2 or higher
-- Composer
-- Laravel 11.x
-- SQLite/MySQL/PostgreSQL
-
-### **Setup Steps**
-
-1. **Clone the repository**
-```bash
-git clone <repository-url>
-cd booking-stadium
-```
-
-2. **Install dependencies**
-```bash
-composer install
-```
-
-3. **Environment setup**
-```bash
-cp .env.example .env
-php artisan key:generate
-```
-
-4. **Configure database in `.env`**
-```env
-
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=booking_stadium
-DB_USERNAME=your_username
-DB_PASSWORD=your_password
-```
-
-5. **Run migrations and seeders**
-```bash
-php artisan migrate
-php artisan db:seed
-```
-
-6. **Start the server**
-```bash
-php artisan serve
-```
-
-The application will be available at `http://localhost:8000`
 
 ---
 
@@ -122,9 +131,7 @@ php artisan db:seed
 
 **What gets seeded:**
 
-1. **Admin User**
-   - Email: `safa@admin.com`
-   - Password: `P@ssword12`
+1. **Admin User** (credentials available in [Installation section](#installation))
 
 2. **Stadiums** (3 stadiums)
    - Al Wasl Sports Club
@@ -147,9 +154,7 @@ php artisan db:seed
 ### **Accessing the Admin Panel**
 
 1. Navigate to: `http://localhost:8000/admin/login`
-2. Login with:
-   - **Email**: `safa@admin.com`
-   - **Password**: `P@ssword12`
+2. Use the admin credentials provided in the [Installation section](#installation)
 
 ### **Admin Features**
 
