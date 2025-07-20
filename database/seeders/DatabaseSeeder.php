@@ -19,5 +19,12 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+
+        // Seed stadiums and pitches for the booking system
+        $this->call([
+            AdminUserSeeder::class,
+            StadiumSeeder::class,
+            PitchSeeder::class,
+        ]);
     }
 }

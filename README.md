@@ -1,61 +1,712 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🏟️ Stadium Booking System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A comprehensive Laravel-based Stadium Booking API system that allows users to book football pitches in stadiums with a complete admin interface and public booking website.
 
-## About Laravel
+[![Laravel](https://img.shields.io/badge/Laravel-11.x-red.svg)](https://laravel.com)
+[![PHP](https://img.shields.io/badge/PHP-8.2+-blue.svg)](https://php.net)
+[![Tests](https://img.shields.io/badge/Tests-26%20Tests-green.svg)](#testing)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🚀 **Features**
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### **Core Functionality**
+- ⚽ **Multi-Stadium Support** - Multiple stadiums with multiple pitches each
+- 🕐 **Flexible Time Slots** - 60-minute and 90-minute booking slots
+- 📅 **Dynamic Operating Hours** - Each pitch has configurable operating hours and days
+- 🚫 **Overbooking Prevention** - Real-time availability checking
+- 💰 **Dynamic Pricing** - Different rates for 60 and 90-minute slots
+- 📱 **Responsive Design** - Works on desktop, tablet, and mobile
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### **Admin Dashboard**
+- 🏢 **Stadium Management** - Create, edit, delete stadiums
+- ⚽ **Pitch Management** - Manage pitches with custom operating hours
+- 📊 **Booking Overview** - View and manage all bookings
+- 🔐 **Secure Admin Access** - Protected admin area with authentication
 
-## Learning Laravel
+### **Public Website**
+- 🏠 **Stadium Listings** - Browse available stadiums
+- 📅 **Real-time Availability** - See available time slots
+- 💳 **Easy Booking** - Simple booking process
+- 📞 **User Management** - Track bookings by email
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### **RESTful API**
+- 🔌 **Complete API** - Full CRUD operations
+- 📋 **Slot Management** - List available slots
+- 🎯 **Booking System** - Create and manage bookings
+- ✅ **Comprehensive Testing** - 26 unit tests covering all scenarios
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 📋 **Table of Contents**
 
-## Laravel Sponsors
+1. [Installation](#installation)
+2. [Database Setup & Seeding](#database-setup--seeding)
+3. [Admin Dashboard](#admin-dashboard)
+4. [Public Website](#public-website)
+5. [API Documentation](#api-documentation)
+6. [Testing](#testing)
+7. [Configuration](#configuration)
+8. [Usage Examples](#usage-examples)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+---
 
-### Premium Partners
+## 🛠️ **Installation**
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### **Prerequisites**
+- PHP 8.2 or higher
+- Composer
+- Laravel 11.x
+- SQLite/MySQL/PostgreSQL
 
-## Contributing
+### **Setup Steps**
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+1. **Clone the repository**
+```bash
+git clone <repository-url>
+cd booking-stadium
+```
 
-## Code of Conduct
+2. **Install dependencies**
+```bash
+composer install
+npm install && npm run build
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+3. **Environment setup**
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-## Security Vulnerabilities
+4. **Configure database in `.env`**
+```env
+DB_CONNECTION=sqlite
+DB_DATABASE=/absolute/path/to/database.sqlite
+# OR for MySQL:
+# DB_CONNECTION=mysql
+# DB_HOST=127.0.0.1
+# DB_PORT=3306
+# DB_DATABASE=booking_stadium
+# DB_USERNAME=your_username
+# DB_PASSWORD=your_password
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+5. **Run migrations and seeders**
+```bash
+php artisan migrate
+php artisan db:seed
+```
 
-## License
+6. **Start the server**
+```bash
+php artisan serve
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+The application will be available at `http://localhost:8000`
+
+---
+
+## 🗄️ **Database Setup & Seeding**
+
+### **Database Structure**
+
+The system uses the following main tables:
+- **`stadiums`** - Stadium information and details
+- **`pitches`** - Individual pitches within stadiums
+- **`bookings`** - User bookings and reservations
+- **`users`** - Admin users (for dashboard access)
+
+### **Seeding Data**
+
+The seeders create comprehensive sample data:
+
+```bash
+php artisan db:seed
+```
+
+**What gets seeded:**
+
+1. **Admin User**
+   - Email: `safa@admin.com`
+   - Password: `P@ssword12`
+
+2. **Stadiums** (3 stadiums)
+   - Al Wasl Sports Club
+   - Dubai Sports City
+   - Emirates Golf Club
+
+3. **Pitches** (9 pitches total - 3 per stadium)
+   - **Pitch 1**: 60-minute slots, operates 06:00-22:00
+   - **Pitch 2**: 90-minute slots, operates 08:00-23:00  
+   - **Pitch 3**: 60-minute slots, operates 10:00-24:00
+
+4. **Sample Data Features**
+   - Different operating hours per pitch
+   - Alternating slot types (60 vs 90 minutes)
+   - Various pricing structures
+   - Different amenities and capacities
+
+### **Custom Seeding**
+
+To create your own data:
+
+```bash
+# Create individual seeders
+php artisan make:seeder CustomStadiumSeeder
+
+# Run specific seeder
+php artisan db:seed --class=CustomStadiumSeeder
+
+# Reset and reseed
+php artisan migrate:fresh --seed
+```
+
+---
+
+## 🏢 **Admin Dashboard**
+
+### **Accessing the Admin Panel**
+
+1. Navigate to: `http://localhost:8000/admin/login`
+2. Login with:
+   - **Email**: `safa@admin.com`
+   - **Password**: `P@ssword12`
+
+### **Admin Features**
+
+#### **🏟️ Stadium Management** (`/admin/stadiums`)
+- **Create New Stadiums**
+  - Basic information (name, address, capacity)
+  - Contact details (phone, email)
+  - GPS coordinates (latitude, longitude)
+  - Status management (Active/Inactive/Maintenance)
+
+- **Edit Stadium Details**
+  - Update all stadium information
+  - Change status and availability
+  - Manage contact information
+
+- **View Stadium Statistics**
+  - See number of pitches per stadium
+  - View booking statistics
+  - Monitor stadium performance
+
+#### **⚽ Pitch Management** (`/admin/pitches`)
+- **Create Custom Pitches**
+  - Select parent stadium
+  - Set pitch type (Football, Basketball, Tennis, etc.)
+  - Configure surface (Grass, Artificial, Clay, Concrete)
+  - **Slot Configuration**: Choose 60-minute OR 90-minute slots
+  - **Operating Hours**: Set custom start/end times
+  - **Operating Days**: Select which days the pitch operates
+  - **Pricing**: Different rates for 60 and 90-minute slots
+  - Capacity and amenities
+
+- **Advanced Features**
+  - Real-time slot preview
+  - Operating schedule validation
+  - Conflict detection
+
+#### **📅 Bookings Management** (`/admin/bookings`)
+- **View All Bookings**
+  - Filter by date, stadium, or pitch
+  - See booking details and user information
+  - Monitor booking status
+
+- **Booking Analytics**
+  - Daily/weekly/monthly statistics
+  - Revenue tracking
+  - Popular time slots analysis
+
+### **Admin Sidebar Navigation**
+- **Responsive Design**: Collapses on mobile devices
+- **Quick Access**: One-click navigation between sections
+- **User-Friendly**: Smooth animations and intuitive layout
+
+---
+
+## 🌐 **Public Website**
+
+### **User Flow**
+
+#### **1. Browse Stadiums** (`/`)
+- View all available stadiums
+- See stadium details and available pitches
+- Browse by location or amenities
+
+#### **2. Select Stadium** (`/stadiums/{id}`)
+- View detailed stadium information
+- See all available pitches
+- Check real-time slot availability
+
+#### **3. Choose Date & Time**
+- Interactive date picker
+- Real-time slot availability
+- Visual time slot selection
+- See pricing for each slot
+
+#### **4. Make Booking** (`/booking/form`)
+- Simple booking form
+- Required information:
+  - Full name
+  - Email address
+  - Phone number
+  - Additional notes (optional)
+
+#### **5. Booking Confirmation** (`/booking/success/{id}`)
+- Booking details and confirmation
+- Booking reference number
+- Stadium and pitch information
+
+#### **6. Manage Bookings** (`/my-bookings`)
+- Enter email to view bookings
+- See upcoming reservations
+- Booking history
+
+### **Smart Features**
+- **Real-time Availability**: Slots update automatically
+- **Slot Type Enforcement**: Only shows available slot durations
+- **Operating Hours**: Respects pitch schedules
+- **Conflict Prevention**: No double bookings possible
+
+---
+
+## 🔌 **API Documentation**
+
+### **Base URL**
+```
+http://localhost:8000/api
+```
+
+### **Authentication**
+Currently, the API is open for public use. Admin endpoints require session authentication.
+
+---
+
+### **🏟️ Stadium Endpoints**
+
+#### **Get All Stadiums**
+```http
+GET /api/stadiums
+```
+
+**Response:**
+```json
+{
+    "success": true,
+    "data": [
+        {
+            "id": 1,
+            "name": "Al Wasl Sports Club",
+            "address": "Al Wasl Road, Dubai",
+            "capacity": 45000,
+            "status": "active",
+            "pitches": [...]
+        }
+    ],
+    "message": "Stadiums retrieved successfully"
+}
+```
+
+#### **Get Stadium Details**
+```http
+GET /api/stadiums/{id}
+```
+
+#### **Get Available Slots for Stadium**
+```http
+GET /api/stadiums/{id}/available-slots?date=2025-07-21
+```
+
+**Parameters:**
+- `date` (required): Date in YYYY-MM-DD format
+
+**Response:**
+```json
+{
+    "success": true,
+    "data": {
+        "stadium_id": 1,
+        "date": "2025-07-21",
+        "pitches": [
+            {
+                "pitch_id": 1,
+                "pitch_name": "Pitch 1",
+                "pitch_type": "football",
+                "pitch_surface": "grass",
+                "available_slots": [
+                    {
+                        "start_time": "08:00",
+                        "end_time": "09:00",
+                        "duration_minutes": 60,
+                        "price": "170.00"
+                    }
+                ]
+            }
+        ]
+    }
+}
+```
+
+---
+
+### **📅 Booking Endpoints**
+
+#### **Create New Booking**
+```http
+POST /api/bookings
+Content-Type: application/json
+```
+
+**Request Body:**
+```json
+{
+    "pitch_id": 1,
+    "user_name": "John Doe",
+    "user_email": "john@example.com",
+    "user_phone": "+971501234567",
+    "booking_date": "2025-07-21",
+    "start_time": "10:00",
+    "end_time": "11:00",
+    "duration_minutes": 60,
+    "notes": "Birthday party booking"
+}
+```
+
+**Response (Success):**
+```json
+{
+    "success": true,
+    "data": {
+        "id": 123,
+        "pitch_id": 1,
+        "user_name": "John Doe",
+        "booking_date": "2025-07-21",
+        "start_time": "10:00",
+        "end_time": "11:00",
+        "total_price": "170.00",
+        "status": "confirmed"
+    },
+    "message": "Booking created successfully"
+}
+```
+
+**Response (Validation Error):**
+```json
+{
+    "success": false,
+    "message": "The given data was invalid.",
+    "errors": {
+        "slot": ["This time slot is already booked."]
+    }
+}
+```
+
+#### **Get Bookings for Date**
+```http
+GET /api/bookings?date=2025-07-21
+```
+
+#### **Get User Bookings**
+```http
+GET /api/bookings/user/bookings?email=user@example.com
+```
+
+#### **Cancel Booking**
+```http
+PATCH /api/bookings/{id}/cancel
+```
+
+---
+
+### **🔍 Pitch Endpoints**
+
+#### **Get Available Slots for Specific Pitch**
+```http
+GET /api/pitches/{id}/available-slots?date=2025-07-21
+```
+
+---
+
+### **⚠️ Error Responses**
+
+**404 Not Found:**
+```json
+{
+    "success": false,
+    "message": "Stadium not found"
+}
+```
+
+**422 Validation Error:**
+```json
+{
+    "success": false,
+    "message": "The given data was invalid.",
+    "errors": {
+        "pitch_id": ["The selected pitch does not exist."],
+        "booking_date": ["Booking date must be today or in the future."]
+    }
+}
+```
+
+---
+
+## 🧪 **Testing**
+
+### **Running Tests**
+
+```bash
+# Run all tests
+php artisan test
+
+# Run specific test files
+php artisan test tests/Feature/Api/StadiumSlotApiTest.php
+php artisan test tests/Feature/Api/BookingApiTest.php
+
+# Run tests with coverage
+php artisan test --coverage
+```
+
+### **Test Coverage**
+
+We have **26 comprehensive tests** covering:
+
+#### **Stadium Slot API Tests** (10 tests)
+- ✅ Returns available slots for stadium
+- ✅ Returns only 60-minute slots for 60-minute pitch
+- ✅ Returns only 90-minute slots for 90-minute pitch
+- ✅ Excludes already booked slots
+- ✅ Respects operating hours and days
+- ✅ Handles invalid requests (404, 422)
+
+#### **Booking API Tests** (16 tests)
+- ✅ Creates valid bookings
+- ✅ Prevents overbooking same slot
+- ✅ Prevents overlapping bookings
+- ✅ Validates required fields
+- ✅ Validates slot type matching
+- ✅ Validates operating hours
+- ✅ Validates operating days
+- ✅ Calculates correct pricing
+- ✅ Prevents booking unavailable pitches
+
+### **Test Examples**
+
+#### **Testing Slot Availability**
+```bash
+# Test that 60-minute pitch only returns 60-minute slots
+php artisan test --filter="it_returns_only_60_minute_slots"
+
+# Test overbooking prevention
+php artisan test --filter="it_prevents_overbooking"
+```
+
+#### **Testing Business Rules**
+```bash
+# Test slot type validation
+php artisan test --filter="it_validates_duration_matches_slot_type"
+
+# Test operating hours validation
+php artisan test --filter="it_validates_booking_within_operating_hours"
+```
+
+### **Manual API Testing**
+
+Use the provided test script:
+
+```bash
+# Make the script executable
+chmod +x api-test.sh
+
+# Run API tests
+./api-test.sh
+```
+
+---
+
+## ⚙️ **Configuration**
+
+### **Pitch Configuration**
+
+Each pitch can be configured with:
+
+#### **Operating Hours**
+```php
+'operating_start_time' => '08:00:00',
+'operating_end_time' => '22:00:00'
+```
+
+#### **Operating Days**
+```php
+'operating_days' => ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
+```
+
+#### **Slot Types**
+```php
+'slot_type' => '60'  // or '90'
+```
+
+### **Environment Variables**
+
+Key configuration options in `.env`:
+
+```env
+# Application
+APP_NAME="Stadium Booking System"
+APP_URL=http://localhost:8000
+
+# Database
+DB_CONNECTION=sqlite
+DB_DATABASE=/path/to/database.sqlite
+
+# Admin Credentials (for seeding)
+ADMIN_EMAIL=safa@admin.com
+ADMIN_PASSWORD=P@ssword12
+```
+
+---
+
+## 💡 **Usage Examples**
+
+### **Scenario 1: Creating a Stadium with Custom Pitches**
+
+1. **Login to Admin Dashboard**
+   ```
+   http://localhost:8000/admin/login
+   ```
+
+2. **Create Stadium**
+   - Navigate to Stadiums → Create
+   - Fill in basic information
+   - Set status as "Active"
+
+3. **Add Pitches with Different Configurations**
+   - **Pitch A**: 60-minute slots, 06:00-22:00, all days
+   - **Pitch B**: 90-minute slots, 08:00-23:00, weekdays only
+   - **Pitch C**: 60-minute slots, 10:00-18:00, weekends only
+
+### **Scenario 2: API Integration**
+
+```javascript
+// Frontend integration example
+const bookPitch = async (bookingData) => {
+    try {
+        const response = await fetch('/api/bookings', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(bookingData)
+        });
+        
+        const result = await response.json();
+        
+        if (result.success) {
+            console.log('Booking successful:', result.data);
+        } else {
+            console.error('Booking failed:', result.errors);
+        }
+    } catch (error) {
+        console.error('Network error:', error);
+    }
+};
+
+// Usage
+bookPitch({
+    pitch_id: 1,
+    user_name: 'Ahmed Ali',
+    user_email: 'ahmed@example.com',
+    user_phone: '+971501234567',
+    booking_date: '2025-07-21',
+    start_time: '15:00',
+    end_time: '16:00',
+    duration_minutes: 60
+});
+```
+
+### **Scenario 3: Mobile App Integration**
+
+```bash
+# Get available slots
+curl "http://localhost:8000/api/stadiums/1/available-slots?date=2025-07-21"
+
+# Create booking
+curl -X POST "http://localhost:8000/api/bookings" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "pitch_id": 1,
+    "user_name": "Mobile User",
+    "user_email": "user@mobile.app",
+    "user_phone": "+971501234567",
+    "booking_date": "2025-07-21",
+    "start_time": "14:00",
+    "end_time": "15:00",
+    "duration_minutes": 60
+  }'
+```
+
+---
+
+## 🔧 **Troubleshooting**
+
+### **Common Issues**
+
+#### **Database Issues**
+```bash
+# Reset database
+php artisan migrate:fresh --seed
+
+# Clear cache
+php artisan cache:clear
+php artisan config:clear
+```
+
+#### **Permission Issues**
+```bash
+# Fix storage permissions
+sudo chown -R www-data:www-data storage/
+sudo chmod -R 775 storage/
+```
+
+#### **Testing Issues**
+```bash
+# Clear test cache
+php artisan config:clear --env=testing
+php artisan cache:clear --env=testing
+```
+
+### **Debug Mode**
+
+Enable debug mode in `.env`:
+```env
+APP_DEBUG=true
+LOG_LEVEL=debug
+```
+
+---
+
+## 📝 **Contributing**
+
+1. Fork the repository
+2. Create a feature branch
+3. Add tests for new features
+4. Ensure all tests pass
+5. Submit a pull request
+
+---
+
+## 📄 **License**
+
+This project is open-sourced software licensed under the [MIT license](LICENSE).
+
+---
+
+## 📞 **Support**
+
+For support and questions:
+- Create an issue in the repository
+- Email: support@stadiumbooking.com
+
+---
+
+**Built with ❤️ using Laravel 11 and modern web technologies.**
