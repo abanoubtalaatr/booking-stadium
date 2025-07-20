@@ -68,7 +68,6 @@ cd booking-stadium
 2. **Install dependencies**
 ```bash
 composer install
-npm install && npm run build
 ```
 
 3. **Environment setup**
@@ -79,15 +78,13 @@ php artisan key:generate
 
 4. **Configure database in `.env`**
 ```env
-DB_CONNECTION=sqlite
-DB_DATABASE=/absolute/path/to/database.sqlite
-# OR for MySQL:
-# DB_CONNECTION=mysql
-# DB_HOST=127.0.0.1
-# DB_PORT=3306
-# DB_DATABASE=booking_stadium
-# DB_USERNAME=your_username
-# DB_PASSWORD=your_password
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=booking_stadium
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
 ```
 
 5. **Run migrations and seeders**
